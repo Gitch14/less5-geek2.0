@@ -5,10 +5,10 @@ public class Souvenirs {
     private String name;
     private String info;
     private String date;
-    private double price;
+    private String price;
 
 
-    public Souvenirs(String name, String info, String date, double price) {
+    public Souvenirs(String name, String info, String date, String price) {
         this.name = name;
         this.info = info;
         this.date = date;
@@ -31,7 +31,7 @@ public class Souvenirs {
     }
 
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
