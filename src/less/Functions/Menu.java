@@ -3,15 +3,13 @@ package less.Functions;
 import less.Manufacturer;
 import less.Souvenirs;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
     Scanner scanner = new Scanner(System.in);
-    static List<Object> listSouvenirs = new ArrayList<>();
-    static List<Object> listManufacturer = new ArrayList<>();
-    static List<Object> list = new ArrayList<>();
+    static List<String> listSouvenirs = new ArrayList<>();
+    static List<String> listManufacturer = new ArrayList<>();
+    static List<String> list = new ArrayList<>();
 
 
 
@@ -21,14 +19,17 @@ public class Menu {
         listSouvenirs.add(s.getInfo());
         listSouvenirs.add(s.getDate());
         listSouvenirs.add(s.getPrice());
+
     }
 
-    public static void listAddManufacturer(Manufacturer m) {
+    public static void listAddManufacturer(Manufacturer m){
         listManufacturer.add(m.getName());
         listManufacturer.add(m.getCountry());
+
     }
 
-    public int menu1() {
+
+    public int menu1(){
 
         boolean b;
         do {
@@ -48,14 +49,28 @@ public class Menu {
     }
 
     public int menu2(){
+        System.out.println("Введите список котрый хотите изменить s = Souvenirs, m = Manufacturer");
+        String ch = scanner.nextLine().toLowerCase();
+
         System.out.println("Введите елмент который хотите изменить");
         String el = scanner.nextLine();
 
-        if(listSouvenirs.contains(el)){
-            int index = listSouvenirs.indexOf(el);
-            el = scanner.nextLine();
-            listSouvenirs.set(index,el);
-            System.out.println("Елемент изминен на : " + el);
+        if (ch.equals("s")) {
+
+            if (listSouvenirs.contains(el)) {
+                int index = listSouvenirs.indexOf(el);
+                el = scanner.nextLine();
+                listSouvenirs.set(index, el);
+                System.out.println("Елемент изминен на : " + el);
+            }
+        }else {
+
+            if (listManufacturer.contains(el)) {
+                int index = listManufacturer.indexOf(el);
+                el = scanner.nextLine();
+                listManufacturer.set(index, el);
+                System.out.println("Елемент изминен на : " + el);
+            }
         }
         return 2;
     }
@@ -75,14 +90,91 @@ public class Menu {
 
     public int menu4(){
 
+        System.out.println("Введите производителя что бы получить информацию");
+        String el = scanner.nextLine();
 
-
+        if (listManufacturer.contains(el)) {
+            int position = listManufacturer.indexOf(el);
+            System.out.println(listManufacturer.get(position+1));
+            System.out.println(listManufacturer.get(position));
+            int position2 = position / 2 * 4;
+            System.out.println(listSouvenirs.get(position2 + 3));
+            System.out.println(listSouvenirs.get(position2 + 2));
+            System.out.println(listSouvenirs.get(position2 + 1));
+            System.out.println(listSouvenirs.get(position2));
+        }
         return 4;
     }
 
-    public List<Object> getList() {
-        list.add(listSouvenirs);
-        list.add(listManufacturer);
+    public int menu5(){
+        System.out.println("Введите город что бы получить информацию");
+        String el = scanner.nextLine();
+
+
+            if (listManufacturer.contains(el)) {
+                int position = listManufacturer.indexOf(el);
+                System.out.println(listManufacturer.get(position));
+                System.out.println(listManufacturer.get(position - 1));
+                int position2 = position / 2 * 4;
+                System.out.println(listSouvenirs.get(position2 + 3));
+                System.out.println(listSouvenirs.get(position2 + 2));
+                System.out.println(listSouvenirs.get(position2 + 1));
+                System.out.println(listSouvenirs.get(position2));
+            }
+
+
+        return 5;
+        }
+
+        
+    
+
+    public int menu6(){
+
+
+        return 6;
+    }
+
+    public int menu7(){
+
+
+        return 7;
+    }
+
+    public int menu8(){
+
+
+        return 8;
+    }
+
+    public int menu9(){
+
+
+        return 9;
+    }
+
+    public int menu10(){
+        System.out.println("Введите елмент который хотите удалить");
+        String el = scanner.nextLine();
+
+        if (listManufacturer.contains(el)) {
+            int position = listManufacturer.indexOf(el);
+            listManufacturer.remove(position + 1);
+            listManufacturer.remove(position);
+            int position2 = position / 2 * 4;
+            listSouvenirs.remove(position2 + 3);
+            listSouvenirs.remove(position2 + 2);
+            listSouvenirs.remove(position2 + 1);
+            listSouvenirs.remove(position2);
+        }
+
+
+        return 10;
+    }
+
+    public List<String> getList() {
+        list.add(String.valueOf(listSouvenirs));
+        list.add(String.valueOf(listManufacturer));
         return list;
     }
 }
