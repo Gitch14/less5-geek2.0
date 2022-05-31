@@ -1,6 +1,10 @@
 package less;
 
-public class Souvenirs {
+import less.Interface.SouvenirsInstruction;
+
+import java.math.BigDecimal;
+
+public class Souvenirs implements SouvenirsInstruction {
 
     private String name;
     private String info;
@@ -16,23 +20,23 @@ public class Souvenirs {
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
-
+    @Override
     public String getInfo() {
         return info;
     }
 
-
+    @Override
     public String getDate() {
         return date;
     }
 
-
+    @Override
     public String getPrice() {
         return price;
     }
-
 }

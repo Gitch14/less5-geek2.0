@@ -3,6 +3,12 @@ package less.Functions;
 import less.Manufacturer;
 import less.Souvenirs;
 
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Menu {
@@ -10,6 +16,7 @@ public class Menu {
     static List<String> listSouvenirs = new ArrayList<>();
     static List<String> listManufacturer = new ArrayList<>();
     static List<String> list = new ArrayList<>();
+
 
 
 
@@ -57,19 +64,23 @@ public class Menu {
 
         if (ch.equals("s")) {
 
-            if (listSouvenirs.contains(el)) {
-                int index = listSouvenirs.indexOf(el);
-                el = scanner.nextLine();
-                listSouvenirs.set(index, el);
-                System.out.println("Елемент изминен на : " + el);
+            for(String str : listSouvenirs) {
+                if(str.equals(el)) {
+                    int index = listSouvenirs.indexOf(el);
+                    el = scanner.nextLine();
+                    listSouvenirs.set(index, el);
+                    System.out.println("Елемент изминен на : " + el);
+                }
             }
         }else {
 
-            if (listManufacturer.contains(el)) {
-                int index = listManufacturer.indexOf(el);
-                el = scanner.nextLine();
-                listManufacturer.set(index, el);
-                System.out.println("Елемент изминен на : " + el);
+            for(String str : listManufacturer) {
+                if(str.equals(el)) {
+                    int index = listManufacturer.indexOf(el);
+                    el = scanner.nextLine();
+                    listManufacturer.set(index, el);
+                    System.out.println("Елемент изминен на : " + el);
+                }
             }
         }
         return 2;
@@ -77,14 +88,8 @@ public class Menu {
 
     public int menu3(){
 
-        for (Object m : listManufacturer) {
-            System.out.println(m + " - Manufacturer");
-
-        }
-        for (Object s : listSouvenirs) {
-            System.out.println(s + " - Souvenirs");
-
-        }
+        System.out.println("Список производителей \n" + listManufacturer);
+        System.out.println("Список информации о сувенироах \n" + listSouvenirs);
         return 3;
     }
 
@@ -93,15 +98,19 @@ public class Menu {
         System.out.println("Введите производителя что бы получить информацию");
         String el = scanner.nextLine();
 
-        if (listManufacturer.contains(el)) {
-            int position = listManufacturer.indexOf(el);
-            System.out.println(listManufacturer.get(position+1));
-            System.out.println(listManufacturer.get(position));
-            int position2 = position / 2 * 4;
-            System.out.println(listSouvenirs.get(position2 + 3));
-            System.out.println(listSouvenirs.get(position2 + 2));
-            System.out.println(listSouvenirs.get(position2 + 1));
-            System.out.println(listSouvenirs.get(position2));
+        for(int i = 0; i < listManufacturer.size(); i++) {
+            String str = listManufacturer.get(i);
+            if(str.equals(el)) {
+                int position = i;
+                System.out.println(listManufacturer.get(position + 1));
+                System.out.println(listManufacturer.get(position));
+                int position2 = position / 2 * 4;
+                System.out.println(listSouvenirs.get(position2 + 3));
+                System.out.println(listSouvenirs.get(position2 + 2));
+                System.out.println(listSouvenirs.get(position2 + 1));
+                System.out.println(listSouvenirs.get(position2));
+                System.out.println("______________________________________");
+            }
         }
         return 4;
     }
@@ -111,8 +120,10 @@ public class Menu {
         String el = scanner.nextLine();
 
 
-            if (listManufacturer.contains(el)) {
-                int position = listManufacturer.indexOf(el);
+        for(int i = 0; i < listManufacturer.size(); i++) {
+            String str = listManufacturer.get(i);
+            if(str.equals(el)) {
+                int position = i;
                 System.out.println(listManufacturer.get(position));
                 System.out.println(listManufacturer.get(position - 1));
                 int position2 = position / 2 * 4;
@@ -120,8 +131,9 @@ public class Menu {
                 System.out.println(listSouvenirs.get(position2 + 2));
                 System.out.println(listSouvenirs.get(position2 + 1));
                 System.out.println(listSouvenirs.get(position2));
+                System.out.println("______________________________________");
             }
-
+        }
 
         return 5;
         }
@@ -130,25 +142,77 @@ public class Menu {
     
 
     public int menu6(){
+        double d;
+
+        System.out.println("Введите цену что бы получить информацию о продуктах ниже этой цены");
+        int el = scanner.nextInt();
+
+        for (int i = 3; i < listSouvenirs.size(); i+=4) {
+            String str = listSouvenirs.get(i);
+            d = Double.parseDouble(str);
+            if(el >= d) {
+                int position = i;
+                System.out.println(listSouvenirs.get(position));
+                int position2 = position / 2;
+                System.out.println(listManufacturer.get(position2));
+                System.out.println(listManufacturer.get(position2 - 1));
+                System.out.println("______________________________________");
+
+            }
+        }
 
 
         return 6;
     }
 
     public int menu7(){
-
-
+        int index = 0;
+        for (int i = 0; i < listManufacturer.size(); i++) {
+            int position = (index);
+            if (listManufacturer.size() > index) {
+                index += 2;
+                System.out.println(listManufacturer.get(position));
+                System.out.println(listManufacturer.get(position + 1));
+                int position2 = position / 2 * 4;
+                System.out.println(listSouvenirs.get(position2));
+                System.out.println(listSouvenirs.get(position2 + 1));
+                System.out.println(listSouvenirs.get(position2 + 2));
+                System.out.println(listSouvenirs.get(position2 + 3));
+                System.out.println("______________________________________");
+                }
+            }
         return 7;
     }
 
     public int menu8(){
+        System.out.println("Введите год что бы получить информацию");
+        String el = scanner.nextLine();
 
+        for (int i = 0; i < listSouvenirs.size(); i++) {
+            String str = listSouvenirs.get(i);
+            if(str.equals(el)) {
+                int position = i;
+                System.out.println(listSouvenirs.get(position));
+                System.out.println(listSouvenirs.get(position - 2));
+                int position2 = position / 2;
+                System.out.println(listManufacturer.get(position2));
+                System.out.println("______________________________________");
 
+            }
+        }
         return 8;
     }
 
     public int menu9(){
-
+        int index = 0;
+        for (int i = 3; i < listSouvenirs.size(); i+=4) {
+                int position = i;
+                System.out.println(listSouvenirs.get(position - 1));
+                System.out.println(listSouvenirs.get(position - 3));
+                int position2 = position / 2;
+                System.out.println(listManufacturer.get(position2 - 1));
+                System.out.println("______________________________________");
+        }
 
         return 9;
     }
@@ -157,17 +221,19 @@ public class Menu {
         System.out.println("Введите елмент который хотите удалить");
         String el = scanner.nextLine();
 
-        if (listManufacturer.contains(el)) {
-            int position = listManufacturer.indexOf(el);
-            listManufacturer.remove(position + 1);
-            listManufacturer.remove(position);
-            int position2 = position / 2 * 4;
-            listSouvenirs.remove(position2 + 3);
-            listSouvenirs.remove(position2 + 2);
-            listSouvenirs.remove(position2 + 1);
-            listSouvenirs.remove(position2);
+        for (int i = 0; i < listManufacturer.size(); i++) {
+            String str = listManufacturer.get(i);
+            if(str.equals(el)) {
+                int position = i;
+                listManufacturer.remove(position + 1);
+                listManufacturer.remove(position);
+                int position2 = position / 2 * 4;
+                listSouvenirs.remove(position2 + 3);
+                listSouvenirs.remove(position2 + 2);
+                listSouvenirs.remove(position2 + 1);
+                listSouvenirs.remove(position2);
+            }
         }
-
 
         return 10;
     }
@@ -176,5 +242,40 @@ public class Menu {
         list.add(String.valueOf(listSouvenirs));
         list.add(String.valueOf(listManufacturer));
         return list;
+    }
+
+    private BufferedReader readerSouvenirs;
+    private BufferedReader readerManufacturer;
+    private FileWriter fileWriterSouvenirs;
+    private FileWriter fileWriterManufacturer;
+
+    public void addWriterSouvenirs() throws IOException {
+        fileWriterSouvenirs = new FileWriter("Souvenirs.txt");
+        fileWriterSouvenirs.write(String.valueOf(listSouvenirs));
+        fileWriterSouvenirs.close();
+    }
+
+    public void addWriterManufacturer() throws IOException {
+        fileWriterManufacturer = new FileWriter("Manufacturer.txt");
+        fileWriterManufacturer.write(String.valueOf(listManufacturer));
+        fileWriterManufacturer.close();
+    }
+
+    public void setUpBufferedReaderSouvenirs() throws IOException {
+        readerSouvenirs = Files.newBufferedReader(
+                Paths.get("Souvenirs.txt"), StandardCharsets.UTF_8);
+    }
+
+    public void setUpBufferedReaderManufacturer() throws IOException {
+        readerManufacturer = Files.newBufferedReader(
+                Paths.get("Manufacturer.txt"), StandardCharsets.UTF_8);
+    }
+
+    public void closeBufferedReaderSouvenirs() throws IOException {
+        readerSouvenirs.close();
+    }
+
+    public void closeBufferedReaderManufacturer() throws IOException {
+        readerManufacturer.close();
     }
 }

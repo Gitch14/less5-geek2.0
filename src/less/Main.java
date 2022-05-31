@@ -1,15 +1,22 @@
 package less;
 
 import less.Functions.Menu;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Menu menu = new Menu();
         Scanner scanner = new Scanner(System.in);
 
-
+        /**
+         * Patterns
+         *
+         * Facade
+         * State
+         */
 
         int n = 0;
         do {
@@ -35,8 +42,8 @@ public class Main {
 
 
 
-
-System.out.println(menu.getList());
+menu.addWriterSouvenirs();
+menu.addWriterManufacturer();
 
 
     }

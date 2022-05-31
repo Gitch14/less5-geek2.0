@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public interface SouvenirsInstruction {
 
    public String getName();
-   public String getInfoAboutManufacrurer();
+   public String getInfo();
    public String getDate();
-   public BigDecimal getPrice();
+   public String getPrice();
 }
