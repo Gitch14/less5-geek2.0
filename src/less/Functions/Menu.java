@@ -38,202 +38,70 @@ public class Menu {
 
     public int menu1(){
 
-        boolean b;
-        do {
-            System.out.println("Введите имя продукта, информацию от производителя, дату изготовления и цену");
-            String prodStr1 = scanner.nextLine();
-            String[] souvenirs = prodStr1.split("  ");
-            Menu.listAddSouvenirs(new Souvenirs(souvenirs[0], souvenirs[1], souvenirs[2], souvenirs[3]));
-            System.out.println("Введите имя производителя, город производителя");
-            String prodStr2 = scanner.nextLine();
-            String[] manufacturer = prodStr2.split("  ");
-            Menu.listAddManufacturer(new Manufacturer(manufacturer[0], manufacturer[1]));
-            System.out.println("Введите Y или y для продолжения");
-            String check = scanner.nextLine().toLowerCase();
-            b = check.contains("Y".toLowerCase());
-        } while (b);
+        Functions1 functions1 = new Functions1();
+        functions1.menu1();
         return 1;
     }
 
     public int menu2(){
-        System.out.println("Введите список котрый хотите изменить s = Souvenirs, m = Manufacturer");
-        String ch = scanner.nextLine().toLowerCase();
+        Functions2 functions2 = new Functions2();
+        functions2.menu2();
 
-        System.out.println("Введите елмент который хотите изменить");
-        String el = scanner.nextLine();
-
-        if (ch.equals("s")) {
-
-            for(String str : listSouvenirs) {
-                if(str.equals(el)) {
-                    int index = listSouvenirs.indexOf(el);
-                    el = scanner.nextLine();
-                    listSouvenirs.set(index, el);
-                    System.out.println("Елемент изминен на : " + el);
-                }
-            }
-        }else {
-
-            for(String str : listManufacturer) {
-                if(str.equals(el)) {
-                    int index = listManufacturer.indexOf(el);
-                    el = scanner.nextLine();
-                    listManufacturer.set(index, el);
-                    System.out.println("Елемент изминен на : " + el);
-                }
-            }
-        }
         return 2;
     }
 
     public int menu3(){
+        Functions3 functions3 = new Functions3();
+        functions3.menu3();
 
-        System.out.println("Список производителей \n" + listManufacturer);
-        System.out.println("Список информации о сувенироах \n" + listSouvenirs);
         return 3;
     }
 
     public int menu4(){
+        Functions4 functions4 = new Functions4();
+        functions4.menu4();
 
-        System.out.println("Введите производителя что бы получить информацию");
-        String el = scanner.nextLine();
-
-        for(int i = 0; i < listManufacturer.size(); i++) {
-            String str = listManufacturer.get(i);
-            if(str.equals(el)) {
-                int position = i;
-                System.out.println(listManufacturer.get(position + 1));
-                System.out.println(listManufacturer.get(position));
-                int position2 = position / 2 * 4;
-                System.out.println(listSouvenirs.get(position2 + 3));
-                System.out.println(listSouvenirs.get(position2 + 2));
-                System.out.println(listSouvenirs.get(position2 + 1));
-                System.out.println(listSouvenirs.get(position2));
-                System.out.println("______________________________________");
-            }
-        }
         return 4;
     }
 
     public int menu5(){
-        System.out.println("Введите город что бы получить информацию");
-        String el = scanner.nextLine();
-
-
-        for(int i = 0; i < listManufacturer.size(); i++) {
-            String str = listManufacturer.get(i);
-            if(str.equals(el)) {
-                int position = i;
-                System.out.println(listManufacturer.get(position));
-                System.out.println(listManufacturer.get(position - 1));
-                int position2 = position / 2 * 4;
-                System.out.println(listSouvenirs.get(position2 + 3));
-                System.out.println(listSouvenirs.get(position2 + 2));
-                System.out.println(listSouvenirs.get(position2 + 1));
-                System.out.println(listSouvenirs.get(position2));
-                System.out.println("______________________________________");
-            }
-        }
+        Functions5 functions5 = new Functions5();
+        functions5.menu5();
 
         return 5;
-        }
-
-        
-    
+    }
 
     public int menu6(){
-        double d;
-
-        System.out.println("Введите цену что бы получить информацию о продуктах ниже этой цены");
-        int el = scanner.nextInt();
-
-        for (int i = 3; i < listSouvenirs.size(); i+=4) {
-            String str = listSouvenirs.get(i);
-            d = Double.parseDouble(str);
-            if(el >= d) {
-                int position = i;
-                System.out.println(listSouvenirs.get(position));
-                int position2 = position / 2;
-                System.out.println(listManufacturer.get(position2));
-                System.out.println(listManufacturer.get(position2 - 1));
-                System.out.println("______________________________________");
-
-            }
-        }
-
+        Functions6 functions6 = new Functions6();
+        functions6.menu6();
 
         return 6;
     }
 
     public int menu7(){
-        int index = 0;
-        for (int i = 0; i < listManufacturer.size(); i++) {
-            int position = (index);
-            if (listManufacturer.size() > index) {
-                index += 2;
-                System.out.println(listManufacturer.get(position));
-                System.out.println(listManufacturer.get(position + 1));
-                int position2 = position / 2 * 4;
-                System.out.println(listSouvenirs.get(position2));
-                System.out.println(listSouvenirs.get(position2 + 1));
-                System.out.println(listSouvenirs.get(position2 + 2));
-                System.out.println(listSouvenirs.get(position2 + 3));
-                System.out.println("______________________________________");
-                }
-            }
+        Functions7 functions7 = new Functions7();
+        functions7.menu7();
+
         return 7;
     }
 
     public int menu8(){
-        System.out.println("Введите год что бы получить информацию");
-        String el = scanner.nextLine();
+        Functions8 functions8 = new Functions8();
+        functions8.menu8();
 
-        for (int i = 0; i < listSouvenirs.size(); i++) {
-            String str = listSouvenirs.get(i);
-            if(str.equals(el)) {
-                int position = i;
-                System.out.println(listSouvenirs.get(position));
-                System.out.println(listSouvenirs.get(position - 2));
-                int position2 = position / 2;
-                System.out.println(listManufacturer.get(position2));
-                System.out.println("______________________________________");
-
-            }
-        }
         return 8;
     }
 
     public int menu9(){
-        int index = 0;
-        for (int i = 3; i < listSouvenirs.size(); i+=4) {
-                int position = i;
-                System.out.println(listSouvenirs.get(position - 1));
-                System.out.println(listSouvenirs.get(position - 3));
-                int position2 = position / 2;
-                System.out.println(listManufacturer.get(position2 - 1));
-                System.out.println("______________________________________");
-        }
+        Functions9 functions9 = new Functions9();
+        functions9.menu9();
 
         return 9;
     }
 
     public int menu10(){
-        System.out.println("Введите елмент который хотите удалить");
-        String el = scanner.nextLine();
-
-        for (int i = 0; i < listManufacturer.size(); i++) {
-            String str = listManufacturer.get(i);
-            if(str.equals(el)) {
-                int position = i;
-                listManufacturer.remove(position + 1);
-                listManufacturer.remove(position);
-                int position2 = position / 2 * 4;
-                listSouvenirs.remove(position2 + 3);
-                listSouvenirs.remove(position2 + 2);
-                listSouvenirs.remove(position2 + 1);
-                listSouvenirs.remove(position2);
-            }
-        }
+        Functions10 functions10 = new Functions10();
+        functions10.menu10();
 
         return 10;
     }
