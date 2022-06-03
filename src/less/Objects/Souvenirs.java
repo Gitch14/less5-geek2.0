@@ -1,4 +1,4 @@
-package less;
+package less.Objects;
 
 import less.Interface.SouvenirsInstruction;
 

@@ -1,7 +1,7 @@
 package less.Functions;
 
-import less.Manufacturer;
-import less.Souvenirs;
+import less.Objects.Manufacturer;
+import less.Objects.Souvenirs;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
